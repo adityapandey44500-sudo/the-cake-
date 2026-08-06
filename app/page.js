@@ -8,12 +8,33 @@ import {
   Smile, Award, ChevronRight, MessageCircle, Sun, Moon, CheckCircle2, 
   ChevronDown, ExternalLink, Instagram, Facebook, Send
 } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import { Card, CardContent } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
-import { Input } from '@/components/ui/input';
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter } from '@/components/ui/dialog';
-import { toast } from 'sonner';
+// Missing components replacement
+const Button = ({ children, className = '', ...props }) => (
+  <button className={`px-4 py-2 rounded-lg font-medium transition ${className}`} {...props}>{children}</button>
+);
+const Card = ({ children, className = '', ...props }) => (
+  <div className={`rounded-xl border bg-card text-card-foreground shadow-sm ${className}`} {...props}>{children}</div>
+);
+const CardContent = ({ children, className = '', ...props }) => (
+  <div className={`p-6 pt-0 ${className}`} {...props}>{children}</div>
+);
+const Badge = ({ children, className = '', ...props }) => (
+  <span className={`inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-semibold ${className}`} {...props}>{children}</span>
+);
+const Input = (props) => (
+  <input className="flex h-10 w-full rounded-md border px-3 py-2 text-sm" {...props} />
+);
+const Dialog = ({ children, open }) => open ? (
+  <div className="fixed inset-0 z-50 bg-black/50 flex items-center justify-center p-4">
+    <div className="bg-white rounded-lg p-6 max-w-md w-full">{children}</div>
+  </div>
+) : null;
+const DialogContent = ({ children }) => <div>{children}</div>;
+const DialogHeader = ({ children }) => <div className="mb-4">{children}</div>;
+const DialogTitle = ({ children }) => <h3 className="text-lg font-semibold">{children}</h3>;
+const DialogDescription = ({ children }) => <p className="text-sm text-gray-500">{children}</p>;
+const DialogFooter = ({ children }) => <div className="mt-4 flex justify-end gap-2">{children}</div>;
+const toast = { success: (msg) => alert(msg), error: (msg) => alert(msg) };
 
 const PRODUCTS = [
   {
