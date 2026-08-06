@@ -16,6 +16,7 @@
     "tailwind-merge": "latest",
     "tailwindcss": "latest",
     "postcss": "latest",
-    "autoprefixer": "latest"
+    "autoprefixer": "latest",
+    "framer-motion": "latest"
   }
 }
